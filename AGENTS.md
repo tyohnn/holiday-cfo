@@ -216,7 +216,7 @@ holiday가 사용자에게 하는 모든 말 — CLI의 `note()` 문구, dash �
 - Core flow: `init` → `account add` → `card add` → `txn add` → `cashflow` → `verify`.
 - `txn add` legs go through repeatable `--leg "ACCOUNT AMOUNT COMMODITY"`. Quote the
  whole leg so a negative amount (`-6500`) isn't parsed as a flag. Full spec:
- `apps/docs/content/docs/dev/cli.mdx`.
+ `apps/docs/content/docs/spec/cli/index.mdx`.
 
 ### Docs site (optional)
 - `pnpm --filter docs dev` serves on port 3000.
