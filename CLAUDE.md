@@ -53,3 +53,9 @@ PRD/US는 기획자·비개발자가 읽고 판단할 수 있어야 한다 — �
 - 정책 규칙을 바꾸면 `apps/docs/content/docs/domain/policy.mdx`의 `<Rule test=…>` 링크가
   실제 테스트에 연결돼야 한다.
 - ADR을 추가할 때 **거부한 대안**을 본문에 남겨라 — 코드를 읽어선 알 수 없는 부분이다.
+
+<!-- oh-my-docs:start -->
+@AGENTS.md
+
+`AGENTS.md` is canonical. Apply its docs-first gate before editing code.
+<!-- oh-my-docs:end -->

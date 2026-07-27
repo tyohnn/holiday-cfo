@@ -37,6 +37,12 @@
       "skillPath": ".agents/skills/migrate-to-vinext/SKILL.md",
       "computedHash": "27d6d96ca63d3aec1f54d8fc10bedd6f504d15604ea364cc9f5e63c8b196e882"
     },
+    "oh-my-doc": {
+      "source": "tyohnn/oh-my-docs",
+      "sourceType": "github",
+      "skillPath": "skills/oh-my-doc/SKILL.md",
+      "computedHash": "a7e8016cf53c335ccc7af6abeb319d034acaba6dc22f410cefb2890d907dcf76"
+    },
     "supabase": {
       "source": "supabase/agent-skills",
       "sourceType": "github",

@@ -1,0 +1,282 @@
+{
+  "contractVersion": "1.0",
+  "skillVersion": "0.2.0",
+  "templateVersion": "0.2.0",
+  "uiSnapshot": {
+    "distribution": "none",
+    "vocabularyDigest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "projectDigest": "c59290f5f9191edae472717f7c999cd65a8602b0a49ec7461768c887b0b0697f",
+  "inventory": {
+    "sections": [
+      "home",
+      "vision",
+      "starting",
+      "domain",
+      "workflow",
+      "planning",
+      "plans",
+      "adr",
+      "spec"
+    ],
+    "catalogs": [
+      "glossary",
+      "models",
+      "policies",
+      "prds",
+      "stories",
+      "spec-data-model",
+      "spec-system-model",
+      "plans",
+      "adr"
+    ],
+    "vocabulary": [],
+    "contentSource": "notion"
+  },
+  "files": {},
+  "provider": {
+    "notion": {
+      "schemaVersion": "1.1",
+      "schemaDigest": "74eda6fd9ad587d6fe44f751e0c1129b3979eb92d714a534bda98a206d667c78",
+      "lastObservedAt": "2026-07-27T01:06:43.868650+00:00",
+      "lastManifestDigest": "74eda6fd9ad587d6fe44f751e0c1129b3979eb92d714a534bda98a206d667c78",
+      "mappings": {
+        "pages.home": {
+          "id": "3aa346da-c456-801a-b7cd-e078793bfa83",
+          "type": "page",
+          "parentKey": "root",
+          "url": "https://www.notion.so/3aa346dac456801ab7cde078793bfa83"
+        },
+        "pages.vision": {
+          "id": "3aa346da-c456-81f5-8982-c67eb76e5223",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac45681f58982c67eb76e5223"
+        },
+        "pages.starting": {
+          "id": "3aa346da-c456-81f1-b04c-e37e2065e9d8",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac45681f1b04ce37e2065e9d8"
+        },
+        "pages.workflow": {
+          "id": "3aa346da-c456-8133-bbfc-e43b9126255e",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac4568133bbfce43b9126255e"
+        },
+        "pages.domain": {
+          "id": "3aa346da-c456-8185-a1ce-cbe693cb4026",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac4568185a1cecbe693cb4026"
+        },
+        "pages.planning": {
+          "id": "3aa346da-c456-816f-85c6-cee089a00fac",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac456816f85c6cee089a00fac"
+        },
+        "pages.spec": {
+          "id": "3aa346da-c456-8115-9b62-eab358919763",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac45681159b62eab358919763"
+        },
+        "pages.plans": {
+          "id": "3aa346da-c456-8113-8aa1-cb95319b52d6",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac45681138aa1cb95319b52d6"
+        },
+        "pages.adrs": {
+          "id": "3aa346da-c456-81f0-8385-f266bf4c182d",
+          "type": "page",
+          "parentKey": "pages.home",
+          "url": "https://www.notion.so/3aa346dac45681f08385f266bf4c182d"
+        },
+        "pages.workflow-planning": {
+          "id": "3aa346da-c456-8141-959f-d9d055677eeb",
+          "type": "page",
+          "parentKey": "pages.workflow",
+          "url": "https://www.notion.so/3aa346dac4568141959fd9d055677eeb"
+        },
+        "pages.development": {
+          "id": "3aa346da-c456-81d1-9502-db570eb8c850",
+          "type": "page",
+          "parentKey": "pages.workflow",
+          "url": "https://www.notion.so/3aa346dac45681d19502db570eb8c850"
+        },
+        "pages.glossary": {
+          "id": "3aa346da-c456-8137-a409-e7d82ee387ef",
+          "type": "page",
+          "parentKey": "pages.domain",
+          "url": "https://www.notion.so/3aa346dac4568137a409e7d82ee387ef"
+        },
+        "pages.models": {
+          "id": "3aa346da-c456-8172-a626-dd06d7fbf4ec",
+          "type": "page",
+          "parentKey": "pages.domain",
+          "url": "https://www.notion.so/3aa346dac4568172a626dd06d7fbf4ec"
+        },
+        "pages.policies": {
+          "id": "3aa346da-c456-8138-8f2f-e43503b56b96",
+          "type": "page",
+          "parentKey": "pages.domain",
+          "url": "https://www.notion.so/3aa346dac45681388f2fe43503b56b96"
+        },
+        "pages.prds": {
+          "id": "3aa346da-c456-8138-b433-ec1ca4caa3e3",
+          "type": "page",
+          "parentKey": "pages.planning",
+          "url": "https://www.notion.so/3aa346dac4568138b433ec1ca4caa3e3"
+        },
+        "pages.stories": {
+          "id": "3aa346da-c456-8194-8ee5-dbf07732f7b8",
+          "type": "page",
+          "parentKey": "pages.planning",
+          "url": "https://www.notion.so/3aa346dac45681948ee5dbf07732f7b8"
+        },
+        "pages.data-model": {
+          "id": "3aa346da-c456-81ac-a2d6-cbff9fca4087",
+          "type": "page",
+          "parentKey": "pages.spec",
+          "url": "https://www.notion.so/3aa346dac45681aca2d6cbff9fca4087"
+        },
+        "pages.system-model": {
+          "id": "3aa346da-c456-81f6-bcd7-d28e1ecfbf37",
+          "type": "page",
+          "parentKey": "pages.spec",
+          "url": "https://www.notion.so/3aa346dac45681f6bcd7d28e1ecfbf37"
+        },
+        "dbs.glossary": {
+          "id": "14594747-3b2d-4257-bc9a-ad59f00cfa84",
+          "type": "database",
+          "parentKey": "pages.glossary",
+          "url": "https://www.notion.so/145947473b2d4257bc9aad59f00cfa84",
+          "dataSourceId": "a3478de3-19cc-4389-96b6-7f7e43b90450"
+        },
+        "dbs.models": {
+          "id": "89762079-8548-4738-bba3-a5126680c06b",
+          "type": "database",
+          "parentKey": "pages.models",
+          "url": "https://www.notion.so/8976207985484738bba3a5126680c06b",
+          "dataSourceId": "047106b7-7f67-4dd4-90a2-4aed92869552"
+        },
+        "dbs.policies": {
+          "id": "247ba971-f926-4d7c-81cf-3e69bf57a43b",
+          "type": "database",
+          "parentKey": "pages.policies",
+          "url": "https://www.notion.so/247ba971f9264d7c81cf3e69bf57a43b",
+          "dataSourceId": "aa03da3f-5ef7-4515-ab76-af8de6e71f9a"
+        },
+        "dbs.prds": {
+          "id": "67efbc63-0319-4985-90a0-9c45170d6757",
+          "type": "database",
+          "parentKey": "pages.prds",
+          "url": "https://www.notion.so/67efbc630319498590a09c45170d6757",
+          "dataSourceId": "b4b8dbe2-0980-4fa1-b6e9-99bda5d34b0b"
+        },
+        "dbs.stories": {
+          "id": "dd070fc4-0295-4a2e-8dde-39132412d4f4",
+          "type": "database",
+          "parentKey": "pages.stories",
+          "url": "https://www.notion.so/dd070fc402954a2e8dde39132412d4f4",
+          "dataSourceId": "b19e66fc-e53e-4d45-b9ba-f8fb74aafe3c"
+        },
+        "dbs.data-model": {
+          "id": "b541e17f-6b6d-4a3d-9cfe-62c5bcdedfce",
+          "type": "database",
+          "parentKey": "pages.data-model",
+          "url": "https://www.notion.so/b541e17f6b6d4a3d9cfe62c5bcdedfce",
+          "dataSourceId": "1d03b997-8f5f-4bd7-b834-74a9d06a57dc"
+        },
+        "dbs.system-model": {
+          "id": "57e0d65a-fe8d-4204-91e3-d7c87731ef9f",
+          "type": "database",
+          "parentKey": "pages.system-model",
+          "url": "https://www.notion.so/57e0d65afe8d420491e3d7c87731ef9f",
+          "dataSourceId": "786e47d2-9226-45d1-86ee-6d5d4b53ddc8"
+        },
+        "dbs.plans": {
+          "id": "70999800-16aa-4e63-886d-97faf4eded01",
+          "type": "database",
+          "parentKey": "pages.plans",
+          "url": "https://www.notion.so/7099980016aa4e63886d97faf4eded01",
+          "dataSourceId": "b7f19a4b-86ae-43e9-b9e0-806d933bb696"
+        },
+        "dbs.adrs": {
+          "id": "2383c840-41b2-44ef-ab7a-92210b033621",
+          "type": "database",
+          "parentKey": "pages.adrs",
+          "url": "https://www.notion.so/2383c84041b244efab7a92210b033621",
+          "dataSourceId": "a6e5a429-ef7e-4d9b-8289-0aa029f79220"
+        }
+      },
+      "pendingOperationIds": [],
+      "completedOperationIds": [
+        "ensure:pages.home",
+        "ensure:pages.vision",
+        "ensure:pages.starting",
+        "ensure:pages.workflow",
+        "ensure:pages.workflow-planning",
+        "ensure:pages.development",
+        "ensure:pages.domain",
+        "ensure:pages.glossary",
+        "ensure:dbs.glossary",
+        "inline:dbs.glossary",
+        "ensure:pages.models",
+        "ensure:dbs.models",
+        "inline:dbs.models",
+        "ensure:pages.policies",
+        "ensure:dbs.policies",
+        "inline:dbs.policies",
+        "ensure:pages.planning",
+        "ensure:pages.prds",
+        "ensure:dbs.prds",
+        "inline:dbs.prds",
+        "ensure:pages.stories",
+        "ensure:dbs.stories",
+        "inline:dbs.stories",
+        "ensure:pages.spec",
+        "ensure:pages.data-model",
+        "ensure:dbs.data-model",
+        "inline:dbs.data-model",
+        "ensure:pages.system-model",
+        "ensure:dbs.system-model",
+        "inline:dbs.system-model",
+        "ensure:pages.plans",
+        "ensure:dbs.plans",
+        "inline:dbs.plans",
+        "ensure:pages.adrs",
+        "ensure:dbs.adrs",
+        "inline:dbs.adrs",
+        "sources:root-index",
+        "relation:dbs.prds:Stories:dbs.stories",
+        "relation:dbs.stories:PRDs:dbs.prds",
+        "relation:dbs.plans:PRD:dbs.prds",
+        "relation:dbs.plans:Stories:dbs.stories",
+        "relation:dbs.plans:Specs:dbs.data-model",
+        "relation:dbs.plans:Specs (System model):dbs.system-model",
+        "body:pages.home",
+        "body:pages.vision",
+        "body:pages.starting",
+        "body:pages.workflow",
+        "body:pages.workflow-planning",
+        "body:pages.development",
+        "body:pages.domain",
+        "body:pages.glossary",
+        "body:pages.models",
+        "body:pages.policies",
+        "body:pages.planning",
+        "body:pages.prds",
+        "body:pages.stories",
+        "body:pages.spec",
+        "body:pages.data-model",
+        "body:pages.system-model",
+        "body:pages.plans",
+        "body:pages.adrs"
+      ]
+    }
+  }
+}
