@@ -128,6 +128,7 @@ Assets:Broker:<증권사>        # multi-commodity: --commodity 생략
 Assets:Property:<이름>        # --non-monetary
 Assets:Receivable:<대상>      # 빌려준 돈
 Assets:Receivable:Tax         # 중간예납·선납 세금 (환급·정산 대기). --cash 아님
+Assets:Clearing:<용도>        # 짝이 붙을 때까지의 파킹 (§이체). --cash 아님
 
 Liabilities:Card:<카드사>:<카드>               # + holiday card add 로 청구주기
 Liabilities:Card:<카드사>:<카드>:Installment   # 할부 잔액 (installment add 가 만듦)
@@ -151,6 +152,7 @@ Expenses:Interest             # 대출·할부 이자 (loan pay 가 사용)
 Expenses:Uncategorized        # 분류 전 보관
 
 Equity:Opening                # 개시잔액의 상대 계정
+Equity:Transfers              # 짝을 영영 못 찾은 이체 잔여 (§이체)
 ```
 
 **수입 공제는 대한민국 법정 요율로 강제한다.** 업체마다
@@ -187,6 +189,19 @@ H1_final`처럼 기수가 필요하다. 조회는 `holiday tax return show <year
 클릭). 지출의
 30%가 Uncategorized인 보고서는 아무것도 답하지 못한다.
 
+**파킹 계정은 둘이다 — "아직 못 찾았다"와 "찾을 수 없다".** 짝을 못 찾은 이체,
+정체 모를 해외승인, 카드대금 이중반영 정정처럼 **곧 붙을 것**은
+`Assets:Clearing:<용도>`(부채 쪽이면 `Liabilities:Clearing:<용도>`)에 파킹한다 —
+용도마다 하나, 여러 통화가 섞이면 `--commodity`를 생략한다. 매칭을 끝까지 돌린
+뒤에도 남는 잔여, 즉 **데이터셋에 없는 계좌로 나가서 영영 짝이 없을 돈**은
+`Equity:Transfers`로 옮긴다. 자산 계정에 방치하면 **없는 돈을 가진 것으로
+계상**한다 — 10년치 재구성에서 이 잔여가 ₩51M이었다.
+
+세 대기열의 질문이 각각 다르다. Uncategorized는 "이건 무슨 카테고리인가",
+Clearing은 "이 돈이 어디로 갔는가", `Equity:Transfers`는 "어디로 갔는지 알 수
+없다고 결론냈다". 앞의 둘은 0으로 수렴해야 하고, 0이 아닌 Clearing 잔액은 보고할
+때 같이 말한다.
+
 ## 스케줄 — 예측은 원장 밖
 
 카드 청구주기·할부·정기지출·정기수입·대출 상환은 **예측이지 사실이 아니다.** 원장에
@@ -203,7 +218,12 @@ H1_final`처럼 기수가 필요하다. 조회는 `holiday tax return show <year
   `…:Installment` 계정에 — 일반 카드 계정에 달면 첫 청구서에 전액이 잡힌다.
   회차 합계는 정확히 총액 (우수리는 첫 회차에). **할부수수료는 계산하지 않는다**
   — 명세서의 회차별 관측값만 `--fees`로 받는다. 카드사 공식 추정은 그럴듯하게
-  틀린 숫자로 전망을 오염시킨다.
+  틀린 숫자로 전망을 오염시킨다. 아직 청구 안 된 회차는 수수료를 **0으로 두고**,
+  명세서가 나오면 `holiday installment revise <id>`로 관측값을 덮는다.
+  **이미 끝난 할부를 이력에 넣을 때는 부채를 정정 전표로 상쇄한다** — 종료분은
+  이미 카드 대금으로 빠져나간 돈이라 `installment add`가 잡은 부채를 그대로 두면
+  이중이다. 앵커는 카드 명세서 잔액이고, 잔액이 남아야 하는 것은 진행 중인
+  건뿐이다.
 - **정기지출**: `holiday recurring add "월세" --expense <비용계정> --funding
   <계정> --amount 800000 --day 25`. **`--funding`이 전부 결정한다**: 통장이면
   그날 출금, 카드면 그날은 빚만 생기고 현금은 카드 주기로 몇 주 뒤에 나간다.
@@ -213,6 +233,12 @@ H1_final`처럼 기수가 필요하다. 조회는 `holiday tax return show <year
   <통장> --amount 3000000 --day 25`. 입금일이 현금일이다. **`--deposit`은
   `--cash` 계정이어야** 현금흐름에 잡힌다 — 아니면 등록은 되지만 투영에서
   빠지고 ⚠로 알린다. 금액은 **실수령(net)** 전망이다.
+- **정기 항목에는 수명이 있다 — `--from` / `--to`.** 금액·자격·계약이 바뀌면
+  기존 등록을 고치는 게 아니라(수정 명령은 없다) `--to <종료일>`로 닫고 새로
+  등록한다. 지역가입 건강보험은 직장가입 전환 전날까지, 이사 전 월세는
+  이사일까지. 닫힌 항목은 `recurring list` / `income list`에서 빠지고 그 이후
+  현금흐름에도 안 잡힌다 — 끝나는 날을 이미 아는 항목은 등록할 때 `--to`를 같이
+  박아 둔다.
 - **수입 정산(법정 공제)**: `holiday income source add "버디파이" --income
   Income:Salary --deposit <통장> --regime salary` 후 `holiday income settle
   "버디파이" --gross 4000000 --earned-tax 400000 --date 2026-07-25 [--post]`.
@@ -258,6 +284,12 @@ H1_final`처럼 기수가 필요하다. 조회는 `holiday tax return show <year
 - 분류 대기가 남으면 **대시보드를 직접 띄워** 분류 대기 카드로 안내한다 (클릭
   한 번에 한 건, ⌥-클릭은 규칙도 저장). 패턴이 명확하면 `holiday rule add` →
   `holiday review apply-rules --accept`. 일괄 재분류는 `holiday recategorize`.
+- **규칙으로 대기열을 밀어서 비우지 마라 — 이체가 지출로 확정된다.** 규칙은
+  적요만 보고 상대 계좌를 모른다. 사람 이름 송금·거래소 입출금·카드대금처럼
+  **지출처럼 생긴 이동**은 카테고리 규칙 대신 Clearing으로 뺀다(§이체). 반대로
+  이미 카테고리가 붙은 행은 이체 매칭에서 건드리지 않는다 — 덮어쓰면 어느 쪽이
+  맞는지 아무도 모른다. 목표는 대기열이 0인 장부가 아니라, 대기열에 **진짜
+  애매한 것만** 남은 장부다.
 
 ## 이체 — import의 함정
 
@@ -271,10 +303,15 @@ H1_final`처럼 기수가 필요하다. 조회는 `holiday tax return show <year
 — 같은 날 동액 다건(잔액 흐름으로 판별), 지갑 충전↔환급 왕복, ±1일 어긋남은
 사용자에게 묻는다. **③ 고아** — 어느 파일에도 짝이 없는 본인 이름 출금은
 데이터셋 밖 계좌로 간 것이다. **절대 Expenses로 확정하지 마라** — 순자산을
-조용히 부순다. `Assets:Bank:Unknown` placeholder에 파킹하고 묻는다. 매칭률의
+조용히 부순다. `Assets:Clearing:Transfers`에 파킹하고 묻는다. 매칭률의
 최대 변수는 계좌 커버리지다 — import 전에 어떤 계좌가 있는지 묻고 최대한
 모은다. 안전망은 `holiday assert`: 명세서 잔액이 ground truth라 매칭 실수는
 숨지 못한다.
+
+거래소 입출금·해외승인·본인 외 사람 이름 송금도 같은 자리로 보낸다 — 용도가
+다르면 계정을 나눈다(§표준 차트). 파킹은 답이 아니라 **미결 표시**다: 매칭을
+끝까지 돌린 뒤에도 남는 잔여는 Clearing에 쌓아 두지 말고 `Equity:Transfers`로
+옮긴다. 자산 계정에 방치하면 없는 돈을 가진 것으로 계상한다.
 
 ## 대출
 
