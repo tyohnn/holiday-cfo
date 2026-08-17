@@ -95,7 +95,9 @@ already committed, and flags the day the balance goes negative. Read the ⚠ lin
 
 **What-if, without writing anything:** `holiday cashflow --spend "2026-09-01 5000000
 새 노트북" --receive "2026-12-25 3000000 보너스"` folds hypotheticals into the runway
-and touches nothing. `--spend` leaves, `--receive` arrives, both repeat. See the
+and touches nothing. `--spend` leaves, `--receive` arrives, both repeat. Taking
+something **out** ("이 구독 해지하면") works the same way — cancel it with the
+opposite assumption, never deregister the real 정기지출 to model a scenario. See the
 Simulate workflow in `references/workflows/simulate.md`.
 
 ## Workflows
@@ -161,4 +163,9 @@ transfers, recipes — live in the ledger folder's own `AGENTS.md`, written by
   catches waits in 분류 대기 for a human.
 - **할부수수료 is not computed.** Read per-row fees off the statement, pass `--fees`.
 - **No auto-fetched rates.** `holiday fx add` takes a rate you supply.
+- **Bank-day rolls are not applied.** `--payment-day 1` on a weekend or 공휴일 still
+  projects on the 1st; model the bank's slip with `cashflow --spend`, never by
+  editing the contract day.
+- **The projection starts today.** No `--as-of`; a bill due today or earlier counts
+  as settled and drops out. Today's outflow goes in the ledger, not the runway.
 - **The dashboard is a snapshot, not live.** Re-bake after any change.

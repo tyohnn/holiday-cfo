@@ -211,8 +211,10 @@ holiday cashflow --until 2027-06-30 \
 ```
 
 `--spend` is money leaving, `--receive` is arriving — no sign to guess — and both
-repeat. Each appears as `가정: <label>`; the ledger is untouched. See the Simulate workflow in
-`references/workflows/simulate.md`.
+repeat. Each appears as `가정: <label>`; the ledger is untouched. Taking something
+**out** of the projection ("이 구독 해지하면") works the same way — add the opposite
+assumption to cancel it, never deregister the real 정기지출 to model a scenario. See
+the Simulate workflow in `references/workflows/simulate.md`.
 
 ## Showing it as a dashboard
 
@@ -277,6 +279,13 @@ Say so plainly rather than improvising:
   cash flow projection.
 - **No auto-fetched rates.** `holiday fx add` takes a rate you supply; nothing
   calls an API. A missing rate throws rather than guessing.
+- **Bank-day rolls are not applied.** A `--payment-day 1` falling on a weekend or
+  공휴일 is projected on the 1st; the bank pays it the next business day. Model the
+  slip as a `cashflow --spend` on the real date — never edit the contract day to
+  make the projection agree.
+- **The projection starts today.** `cashflow` has no `--as-of`, and a bill whose
+  payment date is today or earlier counts as settled and drops out. Money leaving
+  today belongs in the ledger once you can see it, not in the runway.
 - **The dashboard is a snapshot, not a live view.** It renders what
   `holiday dash data` last baked. It does not follow the ledger — re-bake after
   any change, or it shows stale figures with a confident face.
